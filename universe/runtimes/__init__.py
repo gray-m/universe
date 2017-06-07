@@ -11,6 +11,12 @@ with open(os.path.join(os.path.dirname(__file__), '../runtimes.yml')) as f:
 docker_repo = os.environ.get('OPENAI_DOCKER_REPO', 'quay.io/openai')
 
 register_runtime(
+    id='my-runtime',
+    kind='docker',
+    image='docker.io/mhgray/universe-runtimes',
+)
+
+register_runtime(
     id='gym-core',
     kind='docker',
     image=docker_repo + '/universe.gym-core:{}'.format(spec['gym-core']['tag']),

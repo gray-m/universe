@@ -1,3 +1,5 @@
+my-runtime:
+  tag: latest
 flashgames:
   tag: 0.20.28
 gym-core:
