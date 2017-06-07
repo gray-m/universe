@@ -108,6 +108,23 @@ metadata_pixels = {
     'type': 'pixels',
 }
 
+# test environment
+register(
+    id='my-runtime.ExploreGraphSync-v0',
+    entry_point='universe.wrappers:WrappedGymCoreSyncEnv',
+    max_episode_steps=200,
+    tags={
+        'vnc': True,
+        'runtime': 'my-runtime',
+        'metadata_encoding': metadata_pixels,
+    },
+    kwargs={
+        'rewarder_observation': True,
+        'gym_core_id': 'ExploreGraph-v0',
+    },
+    trials=2,
+)
+
 # Should be exactly the same as CartPole-v0
 register(
     id='gym-core.CartPoleLowDSync-v0',
