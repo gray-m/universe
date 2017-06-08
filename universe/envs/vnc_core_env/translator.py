@@ -129,7 +129,7 @@ class ExploreGraphTranslator(object):
         self._possible_keys = [key.UP, key.DOWN, key.LEFT, key.RIGHT, key.SPACE]
 
     def _get_first_valid_keypress(self, keysyms):
-        membership = [k in keysyms for k in self.2_possible_keys]
+        membership = [k in keysyms for k in self._possible_keys]
         return self._possible_keys[membership.index(True)] if any(membership) else key.SPACE
 
     def keysyms_to_vnc_actions(self, keysyms):
