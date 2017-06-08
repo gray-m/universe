@@ -122,3 +122,20 @@ class CartPoleTranslator(object):
             return [key.LEFT]
         else:
             return []
+
+class ExploreGraphTranslator(object):
+
+    def __init__(self, env):
+        self._possible_keys = [key.UP, key.DOWN, key.LEFT, key.RIGHT, key.SPACE]
+
+    def _get_first_valid_keypress(self, keysyms):
+        membership = [k in keysyms for k in self.2_possible_keys]
+        return self._possible_keys[membership.index(True)] if any(membership) else key.SPACE
+
+    def keysyms_to_vnc_actions(self, keysyms):
+        action = self._get_first_valid_keypress(keysyms)
+        return [spaces.KeyEvent(action, down=True)]
+
+    def keysyms_to_index(self, keysyms):
+        return self._possible_keys[membership.index(self._get_first_valid_keypress(keysyms))]
+ 
